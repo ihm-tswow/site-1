@@ -11,4 +11,5 @@ jobs:
         with:
           owner: ihm-tswow
           repo: site-2
+          workflow_file_name: Main.yml
           github_token: ${{ secrets.ACCESS_TOKEN }}
