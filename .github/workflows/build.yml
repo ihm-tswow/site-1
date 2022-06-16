@@ -17,5 +17,12 @@ jobs:
         run: touch __dummy.txt
       - name: Commit build files
         run: git add . && git config user.name test && git config user.email test && git commit -m "Bump"
-      - name: Push to gh_pages
-        run: git push publish_remote HEAD:gh_pages -f
+      - name: Push to another repository
+        uses: https://github.com/MischaPanch/github-action-push-to-another-repository.git@5fecbad518f01d5909109fa086043c7a3cb75821
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
+        with:
+          destination-github-username: 'ihm-tswow'
+          destination-repository-name: 'site-2'
+          user-email: carles3@pina.cat
+          target-branch: main
