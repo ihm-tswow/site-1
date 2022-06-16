@@ -13,9 +13,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Create dummy commit file
         run: echo . > __dummy.txt
-      - name: unset credentials
-        run: git config --unset credential.helper
-
       - run: Invoke-WebRequest -Uri "https://github.com/git-for-windows/git/releases/download/v2.36.1.windows.1/MinGit-2.36.1-64-bit.zip"-OutFile "out.zip"
       - run: tar -xf out.zip
       - name: Commit build files
