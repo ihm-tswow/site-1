@@ -16,6 +16,6 @@ jobs:
       - name: Commit build files
         run: git add . && git config user.name test && git config user.email test && git commit -m "Bump"
       - name: Remove credentials
-        run: git config --global --unset credential.helper
+        run: sudo git config --global --unset credential.helper
       - name: Push
         run: git push "https://ihm-tswow:${{secrets.NEW_TOKEN}}@github.com/ihm-tswow/site-2.git" -f HEAD:main
