@@ -18,7 +18,7 @@ jobs:
       - name: Commit build files
         run: git add . && git config user.name test && git config user.email test && git commit -m "Bump"
       - name: Push to another repository
-        uses: https://github.com/MischaPanch/github-action-push-to-another-repository.git@5fecbad518f01d5909109fa086043c7a3cb75821
+        uses: MischaPanch/github-action-push-to-another-repository@5fecbad518f01d5909109fa086043c7a3cb75821
         env:
           SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
         with:
