@@ -1,0 +1,14 @@
+name: CI
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: convictional/trigger-workflow-and-wait@v1.6.1
+        with:
+          owner: ihm-tswow
+          repo: site-2
+          github_token: ${{ secrets.ACCESS_TOKEN }}
