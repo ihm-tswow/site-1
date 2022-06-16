@@ -14,6 +14,6 @@ jobs:
       - name: Add remote
         run: git remote add publish_remote https://github.com/ihm-tswow/site-2.git
       - name: Commit build files
-        run: rm _doc/api/.gitignore && rm _includes/.gitignore && git add . && git config user.name test && git config user.email test && git commit -m "Bump"
+        run: git add . && git config user.name test && git config user.email test && git commit -m "Bump"
       - name: Push to gh_pages
         run: git push publish_remote HEAD:gh_pages -f
