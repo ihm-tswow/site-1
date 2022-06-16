@@ -13,6 +13,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Add remote
         run: git remote add publish_remote https://github.com/ihm-tswow/site-2.git
+      - name: Create dummy commit file
+        run: touch __dummy.txt
       - name: Commit build files
         run: git add . && git config user.name test && git config user.email test && git commit -m "Bump"
       - name: Push to gh_pages
