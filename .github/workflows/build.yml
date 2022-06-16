@@ -20,4 +20,4 @@ jobs:
       - name: Push
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
-      - run: git push "https://ihm-tswow:${{token}}@github.com/ihm-tswow/site-2.git" -f HEAD:main
+        run: git push "https://ihm-tswow:${{token}}@github.com/ihm-tswow/site-2.git" -f HEAD:main
