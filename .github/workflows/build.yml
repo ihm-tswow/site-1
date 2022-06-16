@@ -11,8 +11,6 @@ jobs:
     steps:
       # Build
       - uses: actions/checkout@v2
-      - name: Build API
-        run: node build_api
       - name: Add remote
         run: git remote add publish_remote https://github.com/ihm-tswow/site-2.git
       - name: Commit build files
