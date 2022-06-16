@@ -17,6 +17,6 @@ jobs:
         run: touch __dummy.txt
       - name: Commit build files
         run: git add . && git config user.name test && git config user.email test && git commit -m "Bump"
-      - run: echo "${{ secrets.SSH_DEPLOY_KEY}}" > "../key"
-      - run: git config --add --local core.sshCommand 'ssh -i ../key -F /dev/null'
+      - run: echo "${{ secrets.SSH_DEPLOY_KEY}}" > "$HOME/key"
+      - run: GIT_SSH_COMMAND='ssh -i $HOME/key'
       - run: git push -f publish_remote HEAD:main
