@@ -17,7 +17,8 @@ jobs:
         run: touch __dummy.txt
       - name: Commit build files
         run: git add . && git config user.name test && git config user.email test && git commit -m "Bump"
-      - run: echo "${{ secrets.SSH_DEPLOY_KEY}}" > "$HOME/key"
-      - run: export GIT_SSH_COMMAND='ssh -i $HOME/key -o UserKnownHostsFile=$HOME/.ssh/known_hosts'
+      - run: mkdir --parents "$HOME/.ssh"
+      - run: echo "${{ secrets.SSH_DEPLOY_KEY}}" > "$HOME/.ssh/deploy_key"
+      - run: export GIT_SSH_COMMAND='ssh -i $HOME/.ssh/deploy_key -o UserKnownHostsFile=$HOME/.ssh/known_hosts'
       - run: ssh-keyscan -H github.com > "$HOME/.ssh/known_hosts"
-      - run: git push -f publish_remote HEAD:main
+      - run: git push "git@github.com:ihm-tswow/site-2.git" -f HEAD:main
