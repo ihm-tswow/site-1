@@ -17,12 +17,7 @@ jobs:
         run: touch __dummy.txt
       - name: Commit build files
         run: git add . && git config user.name test && git config user.email test && git commit -m "Bump"
-      - name: Push to another repository
-        uses: ihm-tswow/github-action-push-to-another-repository@main
-        env:
-          SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
-        with:
-          destination-github-username: 'ihm-tswow'
-          destination-repository-name: 'site-2'
-          user-email: carles3@pina.cat
-          target-branch: main
+      - run: mkdir --parents "$HOME/.shh"
+      - run: echo "${SSH_DEPLOY_KEY}" > "$HOME/key"
+      - run: git config --add --local core.sshCommand 'ssh -i $HOME/key"
+      - run: git push -f publish_remote HEAD:main
