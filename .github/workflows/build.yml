@@ -7,15 +7,13 @@ on:
       - main
 jobs:
   build-api:
-    runs-on: ubuntu-20.04
+    runs-on: windows-2019
     steps:
       # Build
       - uses: actions/checkout@v2
       - name: Create dummy commit file
-        run: touch __dummy.txt
+        run: echo . > __dummy.txt
       - name: Commit build files
         run: git add . && git config user.name test && git config user.email test && git commit -m "Bump"
-      - name: Remove credentials
-        run: sudo git config --global --unset credential.helper
       - name: Push
         run: git push "https://ihm-tswow:${{secrets.NEW_TOKEN}}@github.com/ihm-tswow/site-2.git" -f HEAD:main
